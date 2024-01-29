@@ -1,28 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ClockControls from "./ClockControls";
 import SessionControls from "./SessionControls";
 import SessionTime from "./SessionTime";
 
 function PomodoroClock() {
 
+    useEffect(() => {
+        setMinutes(sessionLength);
+    }, []);
+
     const [breakLength, setBreakLength] = useState(5);
     const [sessionLength, setsessionLength] = useState(25);
-    const [minutes, setMinutes] = useState(25);
+    const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [timerLabel, setTimerLabel] = useState("Session");
     const [isComplete, setIsComplete] = useState(false);
 
     const handleBreakDecrement = () => {
-        setBreakLength(breakLength - 1);
+        breakLength > 0 ? setBreakLength(breakLength - 1) : false;
     }
     const handleBreakIncrement = () => {
-        setBreakLength(breakLength + 1);
+        breakLength < 60 ? setBreakLength(breakLength + 1) : false;
     }
     const handleSessionDecrement = () => {
-        setsessionLength(sessionLength - 1);
+        sessionLength > 0 ? setsessionLength(sessionLength - 1) : false;
     }
     const handleSessionIncrement = () => {
-        setsessionLength(sessionLength + 1);
+        sessionLength < 60 ? setsessionLength(sessionLength + 1) : false;
     }
 
     return (
