@@ -5,10 +5,6 @@ import SessionTime from "./SessionTime";
 
 function PomodoroClock() {
 
-    useEffect(() => {
-        setMinutes(sessionLength);
-    }, []);
-
     const [breakLength, setBreakLength] = useState(5);
     const [sessionLength, setsessionLength] = useState(25);
     const [minutes, setMinutes] = useState(0);
@@ -28,6 +24,11 @@ function PomodoroClock() {
     const handleSessionIncrement = () => {
         sessionLength < 60 ? setsessionLength(sessionLength + 1) : false;
     }
+
+    useEffect(() => {
+        timerLabel == "Session" ? 
+        setMinutes(sessionLength) : setMinutes(breakLength);
+    }, [sessionLength, breakLength]);
 
     return (
         <div className="pomodoro-container">
