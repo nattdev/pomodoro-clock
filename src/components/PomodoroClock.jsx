@@ -6,7 +6,7 @@ import SessionTime from "./SessionTime";
 function PomodoroClock() {
 
     const [breakLength, setBreakLength] = useState(5);
-    const [sessionLength, setsessionLength] = useState(25);
+    const [sessionLength, setSessionLength] = useState(25);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [timerLabel, setTimerLabel] = useState("Session");
@@ -19,10 +19,15 @@ function PomodoroClock() {
         breakLength < 60 ? setBreakLength(breakLength + 1) : false;
     }
     const handleSessionDecrement = () => {
-        sessionLength > 0 ? setsessionLength(sessionLength - 1) : false;
+        sessionLength > 0 ? setSessionLength(sessionLength - 1) : false;
     }
     const handleSessionIncrement = () => {
-        sessionLength < 60 ? setsessionLength(sessionLength + 1) : false;
+        sessionLength < 60 ? setSessionLength(sessionLength + 1) : false;
+    }
+
+    const handleReset = () => {
+        setSessionLength(25);
+        setBreakLength(5);
     }
 
     useEffect(() => {
@@ -35,7 +40,7 @@ function PomodoroClock() {
             <h1>Pomodoro Clock</h1>
             <ClockControls breakLength={breakLength} sessionLength={sessionLength} handleBreakDecrement={handleBreakDecrement} handleBreakIncrement={handleBreakIncrement} handleSessionDecrement={handleSessionDecrement} handleSessionIncrement={handleSessionIncrement} />
             <SessionTime minutes={minutes} seconds={seconds} timerLabel={timerLabel} />
-            <SessionControls />
+            <SessionControls handleReset={handleReset}/>
         </div>
     )
 };
