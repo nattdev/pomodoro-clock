@@ -43,21 +43,21 @@ function PomodoroClock() {
     }, [isStart, minutes, seconds, sessionLength, breakLength, isComplete]);
 
     const handleBreakDecrement = () => {
-        if (!isStart && !isOn) {
+        if (!isStart) {
             if (breakLength > 1) {
                 setBreakLength(breakLength - 1);
             }
         }
     }
     const handleBreakIncrement = () => {
-        if (!isStart && !isOn) {
+        if (!isStart) {
             if (breakLength < 60) {
                 setBreakLength(breakLength + 1);
             }
         }
     }
     const handleSessionDecrement = () => {
-        if (!isStart && !isOn) {
+        if (!isStart) {
             if (sessionLength > 1) {
                 setSessionLength(sessionLength - 1);
                 if (!isComplete) {
@@ -68,7 +68,7 @@ function PomodoroClock() {
     }
 
     const handleSessionIncrement = () => {
-        if (!isStart && !isOn) {
+        if (!isStart) {
             if (sessionLength < 60) {
                 setSessionLength(sessionLength + 1);
                 if (!isComplete) {
