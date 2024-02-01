@@ -46,6 +46,9 @@ function PomodoroClock() {
         if (!isStart) {
             if (breakLength > 1) {
                 setBreakLength(breakLength - 1);
+                if (isComplete) {
+                    setMinutes(breakLength - 1);
+                }
             }
         }
     }
@@ -53,6 +56,9 @@ function PomodoroClock() {
         if (!isStart) {
             if (breakLength < 60) {
                 setBreakLength(breakLength + 1);
+                if (isComplete) {
+                    setMinutes(breakLength + 1);
+                }
             }
         }
     }
@@ -97,7 +103,7 @@ function PomodoroClock() {
     }
 
     return (
-        <div className="pomodoro-container flex flex-col justify-center items-center w-sreen h-screen bg-slate-50">
+        <div className="pomodoro-container flex flex-col justify-center items-center w-sreen h-screen bg-slate-50 text-center">
             <h1 className="text-4xl m-8 font-medium">Pomodoro Clock</h1>
             <ClockControls breakLength={breakLength} sessionLength={sessionLength} handleBreakDecrement={handleBreakDecrement} handleBreakIncrement={handleBreakIncrement} handleSessionDecrement={handleSessionDecrement} handleSessionIncrement={handleSessionIncrement} />
             <SessionTime minutes={minutes} seconds={seconds} isComplete={isComplete} />
