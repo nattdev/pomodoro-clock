@@ -102,7 +102,7 @@ function PomodoroClock() {
             <ClockControls breakLength={breakLength} sessionLength={sessionLength} handleBreakDecrement={handleBreakDecrement} handleBreakIncrement={handleBreakIncrement} handleSessionDecrement={handleSessionDecrement} handleSessionIncrement={handleSessionIncrement} />
             <SessionTime minutes={minutes} seconds={seconds} isComplete={isComplete} />
             <SessionControls handleReset={handleReset} handleStartStop={handleStartStop} />
-            <audio id="beep" src="src/assets/sounds/electronic-alarm.mp3" ref={audioRef}></audio>
+            <audio id="beep" src="https://cdn.jsdelivr.net/gh/nattdev/pomodoro-clock/src/assets/sounds/electronic-alarm.mp3" ref={audioRef}></audio>
         </div>
     )
 };
