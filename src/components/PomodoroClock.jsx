@@ -97,8 +97,8 @@ function PomodoroClock() {
     }
 
     return (
-        <div className="pomodoro-container">
-            <h1>Pomodoro Clock</h1>
+        <div className="pomodoro-container flex flex-col justify-center items-center w-sreen h-screen bg-slate-50">
+            <h1 className="text-4xl m-8 font-medium">Pomodoro Clock</h1>
             <ClockControls breakLength={breakLength} sessionLength={sessionLength} handleBreakDecrement={handleBreakDecrement} handleBreakIncrement={handleBreakIncrement} handleSessionDecrement={handleSessionDecrement} handleSessionIncrement={handleSessionIncrement} />
             <SessionTime minutes={minutes} seconds={seconds} isComplete={isComplete} />
             <SessionControls handleReset={handleReset} handleStartStop={handleStartStop} />

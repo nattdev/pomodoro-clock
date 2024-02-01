@@ -4,12 +4,10 @@ function SessionTime({minutes, seconds, isComplete}) {
     const secondsTime = /^[0-9]$/.test(seconds) ? `0${seconds}` : `${seconds}`;
     const currentTime = `${minutesTime}:${secondsTime}`
 
-    console.log(currentTime, isComplete);
-
     return(
-        <div className="session-container">
-            <p id="timer-label">{isComplete ? "Break" : "Session"}</p>
-            <p id="time-left">{currentTime}</p>
+        <div className="session-container flex flex-col justify-center items-center">
+            <p id="timer-label" className='pt-6 text-3xl font-medium text-blue-700'>{isComplete ? "Break" : "Session"}</p>
+            <p id="time-left" className='p-4 text-4xl font-bold border-blue-600 border-2 rounded-full text-blue-600 pt-4 mt-4 w-52 text-center'>{currentTime}</p>
         </div>
     )
 };
